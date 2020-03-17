@@ -1,0 +1,54 @@
+{
+  "publications": 1000,
+  "subscriptions": 1000,
+  "model": [
+    {
+      "name": "company",
+      "type": "string",
+      "values": ["Google", "Facebook", "Apple", "Microsoft", "HeavenSolutions"],
+      "subscription": {
+        "frequency": 90,
+        "equal_frequency": 50
+      }
+    },
+    {
+      "name": "value",
+      "type": "double",
+      "minValue": 10.0,
+      "maxValue": 100.0,
+      "step": 1,
+      "subscription": {
+        "frequency": 10
+      }
+    },
+    {
+      "name": "drop",
+      "type": "double",
+      "minValue": 0.0,
+      "maxValue": 15.0,
+      "step": 1,
+      "subscription": {
+        "frequency": 100
+      }
+    },
+    {
+      "name": "variation",
+      "type": "double",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "step": 0.01,
+      "subscription": {
+        "frequency": 50
+      }
+    },
+    {
+      "name": "date",
+      "type": "date",
+      "minValue": "01-03-2020",
+      "maxValue": "31-03-2020",
+      "subscription": {
+        "frequency": 50
+      }
+    }
+  ]
+}
