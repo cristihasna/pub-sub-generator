@@ -1,36 +1,44 @@
-export interface StringModelConfig {
+export enum FieldType {
+  ENUM = 'enum',
+  STRING = 'string',
+  DOUBLE = 'double',
+  DATE = 'date'
+}
+
+export interface BaseModelConfig {
   name: string;
-  type: 'string';
-  values: string[];
+  type: FieldType;
   subscription?: {
     frequency?: number;
     equal_frequency?: number;
   };
 }
+export interface EnumModelConfig extends BaseModelConfig {
+  type: FieldType.ENUM;
+  valueType: FieldType.DOUBLE | FieldType.STRING;
+  values: (number | string)[];
+}
 
-export interface NumberModelConfig {
-  name: string;
-  type: 'double';
+export interface NumberModelConfig extends BaseModelConfig {
+  type: FieldType.DOUBLE;
   minValue: number;
   maxValue: number;
   step: number;
-  subscription?: {
-    frequency?: number;
-  };
 }
 
-export interface DateModelConfig {
-  name: string;
-  type: 'date';
+export interface DateModelConfig extends BaseModelConfig {
+  type: FieldType.DATE;
   minDate: Date;
   maxDate: Date;
-  subscription?: {
-    frequency?: number;
-  };
 }
 
+export type ModelConfig = EnumModelConfig | NumberModelConfig | DateModelConfig;
+
 export interface GeneratorConfig {
-  publications: number;
-  subscriptions: number;
-  model: (StringModelConfig | NumberModelConfig | DateModelConfig)[];
+  entriesCount: number;
+  output: {
+    publications: string;
+    subscriptions: string;
+  };
+  model: ModelConfig[];
 }
