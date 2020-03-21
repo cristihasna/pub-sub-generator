@@ -1,53 +1,47 @@
 {
-  "publications": 1000,
-  "subscriptions": 1000,
+  "entriesCount": 1000,
+  "output": {
+    "publications": "publications.txt",
+    "subscriptions": "subscriptions.txt"
+  },
   "model": [
     {
       "name": "company",
-      "type": "string",
+      "type": "enum",
+      "enumType": "string",
       "values": ["Google", "Facebook", "Apple", "Microsoft", "HeavenSolutions"],
       "subscription": {
-        "frequency": 90,
-        "equal_frequency": 50
+        "frequency": 0.75
       }
     },
     {
       "name": "value",
       "type": "double",
-      "minValue": 10.0,
-      "maxValue": 100.0,
-      "step": 1,
+      "minValue": 1,
+      "maxValue": 100,
+      "step": 0.5,
       "subscription": {
-        "frequency": 10
+        "equal_frequency": 0
       }
     },
     {
       "name": "drop",
       "type": "double",
-      "minValue": 0.0,
-      "maxValue": 15.0,
+      "minValue": 1,
+      "maxValue": 50,
       "step": 1,
       "subscription": {
-        "frequency": 100
+        "equal_frequency": 0
       }
     },
     {
       "name": "variation",
       "type": "double",
-      "minValue": 0.0,
-      "maxValue": 1.0,
-      "step": 0.01,
+      "minValue": 0,
+      "maxValue": 2,
+      "step": 0.025,
       "subscription": {
-        "frequency": 50
-      }
-    },
-    {
-      "name": "date",
-      "type": "date",
-      "minValue": "01-03-2020",
-      "maxValue": "31-03-2020",
-      "subscription": {
-        "frequency": 50
+        "equal_frequency": 0
       }
     }
   ]
