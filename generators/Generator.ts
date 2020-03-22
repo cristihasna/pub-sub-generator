@@ -3,16 +3,20 @@ import { FieldOperator, SubscriptionField } from '../model/SubscriptionField.ts'
 import { PublicationField } from '../model/PublicationField.ts';
 import { Maybe } from '../model/Maybe.ts';
 export abstract class Generator {
-  abstract generateValue(config: ModelConfig): any;
+  protected config: ModelConfig;
+  constructor(config: ModelConfig) {
+    this.config = config;
+  }
+  abstract generateValue(): any;
 
-  generatePublicationField(config: ModelConfig): PublicationField {
-    const value = this.generateValue(config);
-    return new PublicationField(config.name, value);
+  generatePublicationField(): PublicationField {
+    const value = this.generateValue();
+    return new PublicationField(this.config.name, value);
   }
 
-  generateOperator(config: ModelConfig): FieldOperator {
-    if (typeof config.subscription?.equal_frequency !== 'undefined') {
-      const shouldBeEqual = Math.random() < config.subscription.equal_frequency;
+  generateOperator(): FieldOperator {
+    if (typeof this.config.subscription?.equal_frequency !== 'undefined') {
+      const shouldBeEqual = Math.random() < this.config.subscription.equal_frequency;
       if (shouldBeEqual) {
         return FieldOperator.EQ;
       } else {
@@ -30,13 +34,13 @@ export abstract class Generator {
     }
   }
 
-  generateSubscriptionField(config: ModelConfig): Maybe<SubscriptionField> {
-    const frequency = config.subscription && config.subscription.frequency;
+  generateSubscriptionField(): Maybe<SubscriptionField> {
+    const frequency = this.config.subscription && this.config.subscription.frequency;
     const shouldExist = frequency ? Math.random() <= frequency : Math.random() < 0.5;
 
-    const operator = this.generateOperator(config);
-    const value = this.generateValue(config);
-    const field = new SubscriptionField(config, operator, value);
+    const operator = this.generateOperator();
+    const value = this.generateValue();
+    const field = new SubscriptionField(this.config, operator, value);
     return new Maybe<SubscriptionField>(field, shouldExist);
   }
 }

@@ -2,7 +2,8 @@ import { NumberModelConfig } from '../types/GeneratorConfig.ts';
 import { Generator } from './Generator.ts';
 
 export class NumberGenerator extends Generator {
-  generateValue(config: NumberModelConfig) {
+  generateValue() {
+    const config = this.config as NumberModelConfig;
     const minValue = config.minValue;
     const maxValue = config.maxValue;
     const step = config.step;

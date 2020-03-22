@@ -4,7 +4,8 @@ import { Generator } from './Generator.ts';
 export class DateGenerator extends Generator {
   months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
-  generateValue(config: DateModelConfig) {
+  generateValue() {
+    const config = this.config as DateModelConfig;
     const minDate = new Date(config.minDate).getTime();
     const maxDate = new Date(config.maxDate).getTime();
 
