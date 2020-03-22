@@ -10,7 +10,6 @@ export class EnumGenerator extends Generator {
   }
 
   generateOperator(config: EnumModelConfig): FieldOperator {
-    console.log(config.enumType);
     if (config.enumType === FieldType.STRING) {
       return FieldOperator.EQ;
     } else {

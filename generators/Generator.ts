@@ -1,6 +1,7 @@
 import { ModelConfig } from '../types/GeneratorConfig.ts';
 import { FieldOperator, SubscriptionField } from '../model/SubscriptionField.ts';
 import { PublicationField } from '../model/PublicationField.ts';
+import { Maybe } from '../model/Maybe.ts';
 export abstract class Generator {
   abstract generateValue(config: ModelConfig): any;
 
@@ -29,14 +30,13 @@ export abstract class Generator {
     }
   }
 
-  generateSubscriptionField(config: ModelConfig): SubscriptionField | null {
+  generateSubscriptionField(config: ModelConfig): Maybe<SubscriptionField> {
     const frequency = config.subscription && config.subscription.frequency;
     const shouldExist = frequency ? Math.random() <= frequency : Math.random() < 0.5;
-    if (!shouldExist) {
-      return null;
-    }
+
     const operator = this.generateOperator(config);
     const value = this.generateValue(config);
-    return new SubscriptionField(config.name, operator, value);
+    const field = new SubscriptionField(config, operator, value);
+    return new Maybe<SubscriptionField>(field, shouldExist);
   }
 }

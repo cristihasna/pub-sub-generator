@@ -18,7 +18,12 @@ export class EntryGenerator {
   }
 
   generateSubscription(): Entry<SubscriptionField> {
-    const fields = this.fieldGenerators.map((generator) => generator.generateSubscriptionField());
+    const maybeFields = this.fieldGenerators.map((generator) => generator.generateSubscriptionField());
+    const fields = maybeFields.filter((maybeField) => maybeField.exists).map((maybeField) => maybeField.value);
+    if (fields.length === 0) {
+      const randomFieldToAdd = Math.floor(Math.random() * maybeFields.length);
+      fields.push(maybeFields[randomFieldToAdd].value);
+    }
     return new Entry<SubscriptionField>(fields);
   }
 }
