@@ -43,6 +43,16 @@
       "subscription": {
         "equal_frequency": 0
       }
+    },
+    {
+      "name": "date",
+      "type": "date",
+      "minDate": "1-feb-2020",
+      "maxDate": "29-feb-2020",
+      "subscription": {
+        "frequency": 0.1,
+        "equal_frequency": 0.75
+      }
     }
   ]
 }

@@ -2,6 +2,7 @@ import { ModelConfig, FieldType } from '../types/GeneratorConfig.ts';
 import { Generator } from './Generator.ts';
 import { EnumGenerator } from './EnumGenerator.ts';
 import { NumberGenerator } from './NumberGenerator.ts';
+import { DateGenerator } from './DateGenerator.ts';
 
 export class FieldGenerator {
   private fieldConfig: ModelConfig;
@@ -16,8 +17,11 @@ export class FieldGenerator {
       case FieldType.DOUBLE:
         this.generator = new NumberGenerator();
         break;
+      case FieldType.DATE:
+        this.generator = new DateGenerator();
+        break;
       default:
-        this.generator = new EnumGenerator();
+        throw new Error(`Invalid field type: ${fieldConfig.type}`);
     }
   }
 

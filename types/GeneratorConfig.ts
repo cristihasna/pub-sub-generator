@@ -32,7 +32,7 @@ export interface DateModelConfig extends BaseModelConfig {
   maxDate: Date;
 }
 
-export type ModelConfig = EnumModelConfig | NumberModelConfig | DateModelConfig;
+export type ModelConfig = BaseModelConfig;
 
 export interface GeneratorConfig {
   entriesCount: number;
