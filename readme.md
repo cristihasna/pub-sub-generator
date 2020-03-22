@@ -1,8 +1,8 @@
 ## This project is built using [Deno](https://deno.land/), which is a Javascript/Typescript runtime environment.
 
-# Instalation:
+# Install:
 Deno ships as a single executable file.
-You cand install it in the following ways.
+You can install it in the following ways:
 
 Using Shell:
 
