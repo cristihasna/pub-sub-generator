@@ -1,5 +1,5 @@
 {
-  "entriesCount": 1000,
+  "entriesCount": 10,
   "output": {
     "publications": "publications.txt",
     "subscriptions": "subscriptions.txt"

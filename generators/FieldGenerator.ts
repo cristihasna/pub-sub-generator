@@ -1,8 +1,8 @@
-import { ModelConfig, FieldType } from '../types/GeneratorConfig.ts';
-import { Generator } from './Generator.ts';
-import { EnumGenerator } from './EnumGenerator.ts';
-import { NumberGenerator } from './NumberGenerator.ts';
+import { FieldType, ModelConfig } from '../types/GeneratorConfig.ts';
 import { DateGenerator } from './DateGenerator.ts';
+import { EnumGenerator } from './EnumGenerator.ts';
+import { Generator } from './Generator.ts';
+import { NumberGenerator } from './NumberGenerator.ts';
 
 export class FieldGenerator {
   private fieldConfig: ModelConfig;

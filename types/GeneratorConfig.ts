@@ -15,7 +15,7 @@ export interface BaseModelConfig {
 }
 export interface EnumModelConfig extends BaseModelConfig {
   type: FieldType.ENUM;
-  valueType: FieldType.DOUBLE | FieldType.STRING;
+  enumType: FieldType.DOUBLE | FieldType.STRING;
   values: (number | string)[];
 }
 

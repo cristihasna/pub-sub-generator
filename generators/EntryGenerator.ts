@@ -1,8 +1,8 @@
-import { FieldGenerator } from './FieldGenerator.ts';
-import { ModelConfig } from '../types/GeneratorConfig.ts';
-import { PublicationField } from '../model/PublicationField.ts';
 import { Entry } from '../model/Entry.ts';
+import { PublicationField } from '../model/PublicationField.ts';
 import { SubscriptionField } from '../model/SubscriptionField.ts';
+import { ModelConfig } from '../types/GeneratorConfig.ts';
+import { FieldGenerator } from './FieldGenerator.ts';
 
 export class EntryGenerator {
   private fieldGenerators: FieldGenerator[] = [];
